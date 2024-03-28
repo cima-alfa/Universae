@@ -38,6 +38,8 @@
 	const historyButton = document.querySelector('input[data-calc-history]');
 	const history = document.querySelector('.history ul');
 
+	let resetCalc = false;
+
 	// Añadir números y operadores a ecuación
 	calcButtons.addEventListener('click', (event) => {
 		const button = event.target.closest('.calculator--button[type="button"]');
@@ -69,6 +71,8 @@
 					return;
 				}
 			}
+
+			resetCalc = false;
 
 			// No permitimos múltiples operadores en seguida, excepto el operador de resta y los paréntesis
 			// Si añadimos el paréntesis abierto, nos saltamos las condiciones
@@ -119,16 +123,18 @@
 
 			return;
 		}
-
+		
 		// Sólo permitimos la coma decimal después de números enteros
 		if (currentEquation.match(/(([0-9]+(?:\.[0-9]+)*(?:,[0-9]+){1})|[^0-9])(?!\1)$/) && value === operators.decimalPoint) {
 			return;
 		}
 
-		// Si introducimos el primer carácter, vaciamos la cadena inicial antes de introducir el carácter
-		if (currentEquation === '0' && value !== ',') {
+		// Si introducimos el primer carácter o el primer carácter después de un resultado es numérico, vaciamos la cadena inicial antes de introducir el carácter
+		if ((currentEquation === '0' || resetCalc) && value !== ',') {
 			calcDisplay.textContent = '';
 		}
+
+		resetCalc = false;
 
 		// Si la ecuación termina con un paréntesis cerrado y añadimos otro número, añadimos el signo de multiplicación
 		if (value.match(/[0-9]|\(/) && currentEquation.match(/\)$/)) {
@@ -186,6 +192,8 @@
 		li.append(liButton);
 
 		history.prepend(li);
+
+		resetCalc = true;
 	});
 	
 	// Resetear la calculadora
