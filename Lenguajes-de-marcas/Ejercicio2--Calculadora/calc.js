@@ -50,6 +50,8 @@
 		
 		const currentEquation = calcDisplay.textContent;
 		let value = button.value;
+
+		calcDisplay.dataset.valid = '';
 		
 		if (button.dataset.calcOperator !== undefined) {
 			// Si el primer carácter introducido es uno de los operadors inlcuido en la lista `allowedStartindOperators`, reemplazamos la cadena inicial con el operador
@@ -176,10 +178,13 @@
 			`)();
 
 			calcDisplay.textContent = value;
+			resetCalc = true;
 		} catch (error) {
 			invalidEquation = true;
 			value = 'La ecuación no es válida!';
 		}
+
+		calcDisplay.dataset.valid = !invalidEquation;
 		
 		// Añadimos el resultado a la historia de la calculadora
 		const li = document.createElement('li');
@@ -192,17 +197,17 @@
 		li.append(liButton);
 
 		history.prepend(li);
-
-		resetCalc = true;
 	});
 	
 	// Resetear la calculadora
 	calcClearAll.addEventListener('click', () => {
 		calcDisplay.textContent = '0';
+		calcDisplay.dataset.valid = '';
 	});
 
 	// Eliminar el último carácter en la pantalla
 	calcClearLast.addEventListener('click', () => {
+		calcDisplay.dataset.valid = '';
 		clearLast();
 	});
 
@@ -224,6 +229,7 @@
 		}
 
 		calcDisplay.textContent = target.dataset.equation.trim();
+		calcDisplay.dataset.valid = '';
 		historyButton.checked = false;
 	});
 }

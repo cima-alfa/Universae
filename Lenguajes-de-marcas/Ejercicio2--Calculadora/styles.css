@@ -88,6 +88,14 @@ table, tr, td, th {
 	overflow-wrap: anywhere;
 }
 
+.calculator--display[data-valid="true"] {
+	border-color: hsl(100, 100%, 45%);
+}
+
+.calculator--display[data-valid="false"] {
+	border-color: hsl(15, 85%, 45%);
+}
+
 .calculator--display::before {
 	content: attr(data-calc-equation);
 }
