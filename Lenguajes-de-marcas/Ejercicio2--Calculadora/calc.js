@@ -35,6 +35,7 @@
 		});
 	};
 
+	const historyButton = document.querySelector('input[data-calc-history]');
 	const history = document.querySelector('.history ul');
 
 	// Añadir números y operadores a ecuación
@@ -101,14 +102,14 @@
 				}
 			}
 
-			//Si abrimos un paréntesis sin un operador previo, añadimos el signo de multiplicación
-			if (value === operators.parenthesisStart && currentEquation.match(/(?:[0-9]|\))$/)) {
-				value = `${operators.multiply}${value}`;
-			}
-
-			// Si introducimos el primer carácter, vaciamos la cadena inicial antes de introducir el carácter
+			// Si el primer carácter de la ecuación es el operador de resta y intentamos introducir otro operador, volvemos a enseñar el valor inicial en la pantalla (función `clearLast()`) y no hacemos nada más
 			if (calcDisplay.textContent === '0') {
 				return;
+			}
+
+			// Si abrimos un paréntesis sin un operador previo, añadimos el signo de multiplicación
+			if (value === operators.parenthesisStart && currentEquation.match(/(?:[0-9]|\))$/)) {
+				value = `${operators.multiply}${value}`;
 			}
 
 			calcDisplay.textContent += value;
@@ -176,9 +177,15 @@
 		
 		// Añadimos el resultado a la historia de la calculadora
 		const li = document.createElement('li');
+		const liButton = document.createElement('button');
 
-		li.textContent += invalidEquation ? `${value} - " ${currentEquation} "` : `${currentEquation} = ${value}`;
-		history.appendChild(li);
+		liButton.dataset.equationValid = !invalidEquation;
+		liButton.dataset.equation = currentEquation;
+		liButton.classList.add('history--recover');
+		liButton.textContent += invalidEquation ? `${value} - " ${currentEquation} "` : `${currentEquation} = ${value}`;
+		li.append(liButton);
+
+		history.prepend(li);
 	});
 	
 	// Resetear la calculadora
@@ -200,4 +207,24 @@
 
 		calcDisplay.textContent = (result = calcDisplay.textContent.slice(0, -1)) === '' ? '0' : equationFormat(result);
 	}
+
+	history.addEventListener('click', (event) => {
+		const target = event.target.closest('.history--recover');
+
+		if (!target) {
+			return;
+		}
+
+		calcDisplay.textContent = target.dataset.equation.trim();
+		historyButton.checked = false;
+	});
 }
+
+// Simulamos la funcionalidad de los botones para elementos con `role="button"`
+document.addEventListener('keydown', (event) => {
+	const target = event.target;
+
+	if (target.matches('[role="button"]') && (event.key === 'Enter' || event.key === ' ')) {
+		target.closest('[role="button"]').click();
+	}
+});
