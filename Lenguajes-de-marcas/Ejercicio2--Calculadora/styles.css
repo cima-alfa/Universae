@@ -202,8 +202,15 @@ table, tr, td, th {
 
 .history ul {
 	margin-top: 1rem;
+	padding-left: .725rem;
 	
-	list-style-position: inside;
+	list-style-position: outside;
+}
+
+.history li::marker {
+	content: '\2022  ';
+
+	margin: 0;
 }
 
 .history .calculator--button {
@@ -221,4 +228,17 @@ table, tr, td, th {
 .history .calculator--button span {
 	position: relative;
 	top: -.125rem;
+}
+
+.history--recover {
+	appearance: none;
+
+	background-color: transparent;
+	border: none;
+
+	cursor: pointer;
+}
+
+.history--recover:hover, .history--recover:focus-visible {
+	text-decoration: underline;
 }
