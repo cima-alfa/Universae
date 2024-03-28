@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+
+	<title>Calculadora</title>
+
+	<script src="calc.js" defer></script>
+</head>
+<body>
+	<input type="checkbox" id="calc-history" class="calculator--button-hidden" data-calc-history>
+	<div class="calculator-wrapper">
+		<table class="calculator">
+			<thead class="calculator--head">
+				<tr>
+					<th colspan="4">
+						<div class="calculator--display">0</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody class="calculator--body">
+				<tr>
+					<td colspan="2">
+						<label for="calc-history" class="calculator--button">Historia</label>
+					</td>
+					<td><input type="reset" class="calculator--button" data-calc-clear-all value="AC"></td>
+					<td><input type="reset" class="calculator--button" data-calc-clear-last value="C"></td>
+				</tr>
+				<tr>
+					<td><input type="button" class="calculator--button" value="1"></td>
+					<td><input type="button" class="calculator--button" value="2"></td>
+					<td><input type="button" class="calculator--button" value="3"></td>
+					<td>
+						<table class="calculator--button-group button-group--columns">
+							<tr>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value="+">
+								</td>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value="-">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" class="calculator--button" value="4"></td>
+					<td><input type="button" class="calculator--button" value="5"></td>
+					<td><input type="button" class="calculator--button" value="6"></td>
+					<td>
+						<table class="calculator--button-group button-group--rows">
+							<tr>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value="&#xD7;">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value="&div;">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" class="calculator--button" value="7"></td>
+					<td><input type="button" class="calculator--button" value="8"></td>
+					<td><input type="button" class="calculator--button" value="9"></td>
+					<td>
+						<table class="calculator--button-group button-group--columns">
+							<tr>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value="(">
+								</td>
+								<td>
+									<input type="button" class="calculator--button" data-calc-operator value=")">
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" class="calculator--button" value="0"></td>
+					<td><input type="button" class="calculator--button" value=","></td>
+					<td><input type="submit" class="calculator--button" value="="></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="history">
+		<label for="calc-history" class="calculator--button"><span>&#xD7;</span></label>
+		<h2>Historia</h2>
+		<ul></ul>
+	</div>
+</body>
+</html>

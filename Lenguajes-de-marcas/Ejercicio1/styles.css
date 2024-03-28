@@ -1,0 +1,13 @@
+body {
+	background-color: red;
+	color: aliceblue;
+}
+
+h1 {
+	font-size: 60px;
+	font-family: 'Trebuchet MS';
+}
+
+hr {
+	border-color: aliceblue;
+}
