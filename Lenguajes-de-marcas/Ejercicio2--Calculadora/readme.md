@@ -2,7 +2,7 @@
 
 - Soporta números enteros y decimales y los siguientes operadores: + - &times; &div; ( ).
 - Incluye historia con la posibilidad de recuperar las ecuaciones.
-- Los números en la pantalla aparecen de forma legible, por ejemplo: 10.000,50
+- Los números en la pantalla aparecen de forma legible, por ejemplo: 10.000,50.
 
 ![Screenshot 3](docs/screenshot3.png)
 ![Screenshot 2](docs/screenshot2.png)
