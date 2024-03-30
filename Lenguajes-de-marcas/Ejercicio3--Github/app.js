@@ -26,13 +26,13 @@
 	const htmlRoot = document.querySelector('html');
 	const primaryNav = document.querySelector('.primary-nav');
 	const primaryNavMenuToggle = document.querySelector('.primary-nav-menu--toggle');
-	const toggleEvent = (event) => {
+	const toggleMenuEvent = (event) => {
 		event.stopImmediatePropagation();
 		
 		if (primaryNav.dataset.mobile === 'open' && !event.target.closest('.primary-nav--menu')) {
 			primaryNav.setAttribute('data-mobile', 'closed');
 			htmlRoot.dataset.overflow = 'enabled';
-			htmlRoot.removeEventListener('click', toggleEvent);
+			htmlRoot.removeEventListener('click', toggleMenuEvent);
 		}
 	};
 
@@ -42,11 +42,37 @@
 		if (primaryNav.dataset.mobile !== 'open') {
 			primaryNav.setAttribute('data-mobile', 'open');
 			htmlRoot.dataset.overflow = 'disabled';
-			htmlRoot.addEventListener('click', toggleEvent);
+			htmlRoot.addEventListener('click', toggleMenuEvent);
 		} else {
 			primaryNav.setAttribute('data-mobile', 'closed');
 			htmlRoot.dataset.overflow = 'enabled';
-			htmlRoot.removeEventListener('click', toggleEvent);
+			htmlRoot.removeEventListener('click', toggleMenuEvent);
+		}
+	});
+
+	const searchBox = document.querySelector('.search-wrapper');
+	const searchBoxToggle = document.querySelector('[data-nav-action="search"]');
+	const toggleSearchBoxEvent = (event) => {console.log(searchBox.dataset.open);
+		event.stopImmediatePropagation();
+		
+		if (searchBox.dataset.open !== undefined && !event.target.closest('.search')) {
+			searchBox.toggleAttribute('data-open', false);
+			htmlRoot.dataset.overflow = 'enabled';
+			htmlRoot.removeEventListener('click', toggleSearchBoxEvent);
+		}
+	};
+
+	searchBoxToggle.addEventListener('click', (event) => {
+		event.stopImmediatePropagation();
+
+		if (searchBox.dataset.open === undefined) {
+			if (primaryNav.dataset.mobile === 'open') {
+				primaryNavMenuToggle.click();
+			}
+
+			searchBox.toggleAttribute('data-open', true);
+			htmlRoot.dataset.overflow = 'disabled';
+			htmlRoot.addEventListener('click', toggleSearchBoxEvent);
 		}
 	});
 }

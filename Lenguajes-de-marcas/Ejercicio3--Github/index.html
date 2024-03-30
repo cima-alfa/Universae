@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,43 @@
 	<script src="app.js" defer></script>
 </head>
 <body>
+	<div class="search-wrapper">
+		<div class="search">
+			<div class="search--box icon-before">
+				<input type="text">
+			</div>
+			<div class="search-explore--title">Explore</div>
+			<ul class="search--explore">
+				<li>
+					<a href="#" title="Enterprise" class="search--link">
+						<span class="icon-before" data-icon="&#xe7f1;">Enterprise</span>
+						<span class="search--learn">Learn More</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="Security" class="search--link">
+						<span class="icon-before" data-icon="&#xe8e8;">Security</span>
+						<span class="search--learn">Learn More</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="Copilot" class="search--link">
+						<span class="icon-before" data-icon="&#xea4a;">Copilot</span>
+						<span class="search--learn">Learn More</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="Pricing" class="search--link">
+						<span class="icon-before" data-icon="&#xe870;">Pricing</span>
+						<span class="search--learn">Learn More</span>
+					</a>
+				</li>
+			</ul>
+			<div class="search--syntax">
+				<a href="#" title="Search syntax tips">Search syntax tips</a>
+			</div>
+		</div>
+	</div>
 	<div class="page-wrapper">
 		<header class="page-header">
 			<nav class="primary-nav" data-mobile="closed">
@@ -183,21 +220,73 @@
 					<li>
 						<a href="#" title="Pricing" class="primary-nav--link">Pricing</a>
 					</li>
+					<li data-action data-action-position="first">
+						<button href="#" title="Search or jump to..." class="primary-nav--action icon-before" data-nav-action="search">Search or jump to...</button>
+					</li>
+					<li data-action>
+						<a href="#" title="Sign up" class="primary-nav--action">Sign up</a>
+					</li>
+				</ul>
+				<ul class="primary-nav--actions">
+					<li>
+						<a href="#" title="Sign in" class="primary-nav--action">Sign in</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
 
-		<main class="page-content" style="height: 5000px;">
-			<section class="hero">
+		<main class="page-content">
+			<div class="page-content-wrapper">
+				<section class="content-section hero" aria-labelledby="section-hero" data-section-color="purple">
+					<div class="content-wrapper">
+						<h1 id="section-hero">Let&#x2019;s build from here</h1>
+						<p>The world&#x2019;s leading AI-powered developer platform.</p>
+					</div>
+					<div class="content-wrapper sign-up">
+						<form action="#" class="sign-up--form">
+							<label>
+								<input type="text" required>
+								<div class="input-label">Email address</div>
+							</label>
+							<button type="submit">Sign up for GitHub</button>
+						</form>
+						
+						<a href="#" title="Start a free enterprise trial" class="sign-up--enterprise"><span>Start a free enterprise trial <span class="icon icon-line-height">&#xe941;</span></span></a>
+					</div>
+					<div class="content-wrapper">
+						<p class="subtitle" data-style="smaller">Trusted by the world&#x2019;s leading organizations <span class="icon rotate-270 color-blue icon-line-height">&#xf8ab;</span></p>
+						<ul class="org-logos">
+							<li><img src="images/3m.svg" alt="3M"></li>
+							<li><img src="images/kpmg.svg" alt="KPMG"></li>
+							<li><img src="images/mercedes.svg" alt="Mercedes Benz"></li>
+							<li><img src="images/sap.svg" alt="SAP"></li>
+							<li><img src="images/pg.svg" alt="P&amp;G"></li>
+							<li><img src="images/telus.svg" alt="Telus"></li>
+						</ul>
+					</div>
+				</section>
+				<section class="content-section hero" data-section-color="green">
 				<div class="content-wrapper">
-					<h1>Let&#x2019;s build from here</h1>
-				</div>
-				<div class="content-wrapper"></div>
-				<div class="content-wrapper"></div>
-			</section>
+						<h2 class="section-title">Productivity</h2>
+						<h3 class="section-description">
+							<span class="color-accent">Accelerate innovation</span><br>
+							Our AI-powered platform increases the pace of software development.
+						</h3>
+					</div>
+					<div class="content-wrapper">
+						<img src="images/git-code.png" alt="Code" class="content-img">
+					</div>
+					<div class="content-wrapper half-width">
+						<p><strong>GitHub Copilot</strong> empowers developers to complete tasks 55% faster with contextualized AI coding assistance across workflows.</p>
+						<p><a href="#" title="Explore GitHub Copilot" class="action icon-after">Explore GitHub Copilot</a></p>
+					</div>
+				</section>
+			</div>
 		</main>
 
 		<footer class="page-footer">
+			Actividad de lenguajes de marca - Universae<br>
+			Iconos usados: MatIcons de Google
 		</footer>
 	</div>
 </body>
