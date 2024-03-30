@@ -1,6 +1,16 @@
 // Separamos la funcionalidad de la calculadora del Global Scope metiendo el código entre corchetes.
 
 {
+	const clearLast = function () {
+		const currentEquation = calcDisplay.textContent;
+		
+		if (currentEquation === '0') {
+			return;
+		}
+		
+		calcDisplay.textContent = (result = currentEquation.slice(0, -1)) === '' ? '0' : equationFormat(result);
+	}
+	
 	const operators = {
 		multiply: '\u00D7',
 		divide: '\u00F7',
@@ -210,16 +220,6 @@
 		calcDisplay.dataset.valid = '';
 		clearLast();
 	});
-
-	function clearLast() {
-		const currentEquation = calcDisplay.textContent;
-
-		if (currentEquation === '0') {
-			return;
-		}
-
-		calcDisplay.textContent = (result = calcDisplay.textContent.slice(0, -1)) === '' ? '0' : equationFormat(result);
-	}
 
 	history.addEventListener('click', (event) => {
 		const target = event.target.closest('.history--recover');
