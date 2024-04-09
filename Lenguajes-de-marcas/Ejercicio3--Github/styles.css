@@ -956,7 +956,9 @@ strong {
 .page-footer {
 	padding: var(--spacer-50) var(--spacer-20);
 	text-align: center;
+}
 
+.page-footer p {
 	font-size: .9rem;
 	color: hsl(0, 0%, 70%);
 }
