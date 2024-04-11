@@ -184,11 +184,18 @@
 		try {
 			value = Function(`
 				"use strict";
-				return (new Intl.NumberFormat('es-ES', { maximumFractionDigits: 20 })).format(${parseEquation})
+				return ${parseEquation};
 			`)();
 
-			calcDisplay.textContent = value;
-			resetCalc = true;
+			// El infinito no es válido, además puede ser el resultado de una división entre 0. En el caso del infinito o si el resultado no es numérico, marcamos la ecuación como no válida
+			if (value === Infinity || isNaN(value)) {
+				invalidEquation = true;
+				value = 'La ecuación no es válida!';
+			} else {
+				value = numberFormatter.format(value);
+				calcDisplay.textContent = value;
+				resetCalc = true;
+			}
 		} catch (error) {
 			invalidEquation = true;
 			value = 'La ecuación no es válida!';
